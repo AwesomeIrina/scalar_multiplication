@@ -37,7 +37,7 @@ template<typename T>
 void scalar_vectors<T>::fillVectors()
 {
     std::default_random_engine random_engine(rand()%10);
-    std::uniform_int_distribution<T> distrib(0, 100);
+    std::uniform_real_distribution<T> distrib(0, 100);
 
     for(int i = 0; i < vector_size; i++){
         first_vector[i] = distrib(random_engine);
@@ -50,17 +50,24 @@ template<typename T>
 void scalar_vectors<T>::scalarMultiplication()
 {
     int i = 0;
-
-    for(i = 0; i< vector_size; i++){
-       result+=first_vector[i]*second_vector[i];
+    double result = 0;
+    #pragma omp parallel shared(first_vector, second_vector) num_threads(4)
+    {
+        #pragma omp for private(i) reduction(+:result)
+        for(i = 0; i< vector_size; i++){
+        result+=first_vector[i]*second_vector[i];
+        }
     }
+
+    this->result = result;
 }
 
 
 template<typename T>
 void scalar_vectors<T>::printResult()
 {
-    std::cout<<result<<std::endl;
+    std::cout<<"The size of the vectors is "<<vector_size<<std::endl;
+    std::cout<<"Result of scalar multiplication is "<<result<<std::endl;
 }
 
 

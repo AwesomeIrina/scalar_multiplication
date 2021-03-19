@@ -3,8 +3,10 @@
 
 int main()
 {
-    int k = 5;
-    scalar_vectors<int> A(5);
+    std::cout<<"Enter vector size"<<std::endl;
+    int size;
+    std::cin>>size;
+    scalar_vectors<double> vector(size);
     system("pause");
     return 0;
 }
