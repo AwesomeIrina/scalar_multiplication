@@ -9,7 +9,6 @@ CONFIG -= app_bundle
 
 SOURCES += \
         main.cpp \
-        matrix_multiplication.cpp \
         scalar_vectors.cpp
 
 # Default rules for deployment.
@@ -19,5 +18,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     includes.h \
-    matrix_multiplication.h \
     scalar_vectors.h
