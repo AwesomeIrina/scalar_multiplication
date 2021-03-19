@@ -1,8 +1,10 @@
 #include <QCoreApplication>
+#include <scalar_vectors.h>
 
-int main(int argc, char *argv[])
+int main()
 {
-    QCoreApplication a(argc, argv);
-
-    return a.exec();
+    int k = 5;
+    scalar_vectors<int> A(5);
+    system("pause");
+    return 0;
 }
