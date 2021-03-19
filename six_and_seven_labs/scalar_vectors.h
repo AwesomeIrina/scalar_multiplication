@@ -70,5 +70,4 @@ void scalar_vectors<T>::printResult()
     std::cout<<"Result of scalar multiplication is "<<result<<std::endl;
 }
 
-
 #endif // SCALAR_VECTORS_H
